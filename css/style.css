@@ -1128,9 +1128,11 @@ footer {
     z-index: 2;
     background-color: rgb(12, 11, 11);
     transform: translateX(800px);
+    opacity: 0;
     transition: all ease-in 0.5s;
   }
   .mobile-menu{
+    opacity: 1;
     transform: translateX(-100px);
   }
   nav ul li a {
