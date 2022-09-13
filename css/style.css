@@ -1081,6 +1081,9 @@ footer {
     width: 100vw;
     margin-top: 1.5%;
   }
+  .inner{
+    width: 100vw;
+  }
   .card-content{
     width: 320px;
   }
@@ -1116,7 +1119,6 @@ footer {
     width: 60vw;
     /* height: 10vh; */
     position: relative; 
-
   }
   .navlinks {
     width: 100vw;
@@ -1127,13 +1129,15 @@ footer {
     left: 0%;
     z-index: 2;
     background-color: rgb(12, 11, 11);
-    transform: translateX(800px);
+    transform: translatex(800px);
     opacity: 0;
+    /* display: none; */
     transition: all ease-in 0.5s;
   }
   .mobile-menu{
     opacity: 1;
-    transform: translateX(-100px);
+    /* display: block; */
+    transform: translatex(-100px);
   }
   nav ul li a {
     color: #fff;
