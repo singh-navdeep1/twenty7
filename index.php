@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/smoothsrolling.js"></script>
   </head>
-  <body>
+<body>
     <main>
       <header>
         <div class="inner">
@@ -39,9 +38,9 @@
           </div>
           
           </nav>
-         
+          <div class="clearfix"></div>
         </div>
-        <div class="clearfix"></div>
+      
       </header>
 
       <div id="header-mid">
@@ -67,29 +66,75 @@
           </div>
           <div id="c2">
             <h2>Request a FREE Quote Now</h2>
-            <form>
-              <input type="name" placeholder=" Name" id="name" required />
+            <form action="" method="post">
+              <input type="name" name="name"  placeholder=" Name" id="name" required />
               <input
                 type="tel"
+                name="tel"
                 placeholder="phone number"
                 id="phone"
                 required
               />
-              <input type="email" placeholder="email" id="email" required />
+              <input type="email"  name="email" placeholder="email" id="email" required />
               <input
                 type="company Name"
+                name="company name"
                 placeholder="company Name"
                 id="company"
                 required
               />
               <textarea
+                name="message"
                 placeholder="tell us your rrequirement"
                 required
                 class="textarea1"
               ></textarea>
-
-              <button class="btn">Get quote</button>
+              <!-- <p class="success"> <?php echo $success;  ?></p>
+              <p class="failed"> <?php echo $failed;  ?></p> -->
+              <button class="btn" name="submit"  data-submit="...Sending">Get quote</button>
             </form>
+            <?php  
+ 
+ if(isset($_POST['submit'])) {
+  $mailto = "sethrolling560@gmail.com";  //My email address
+  //getting customer data
+  $name = $_POST['name']; //getting customer name
+  $fromEmail = $_POST['email']; //getting customer email
+  $phone = $_POST['tel']; //getting customer Phome number
+  $subject = $_POST['subject']; //getting subject line from client
+  $subject2 = "Confirmation: Message was submitted successfully | HMA WebDesign"; // For customer confirmation
+  
+  //Email body I will receive
+  $message = "Cleint Name: " . $name . "\n"
+  . "Phone Number: " . $phone . "\n\n"
+  . "Client Message: " . "\n" . $_POST['message'];
+  
+  //Message for client confirmation
+  $message2 = "Dear" . $name . "\n"
+  . "Thank you for contacting us. We will get back to you shortly!" . "\n\n"
+  . "You submitted the following message: " . "\n" . $_POST['message'] . "\n\n"
+  . "Regards," . "\n" . "- HMA WebDesign";
+  
+  //Email headers
+  $headers = "From: " . $fromEmail; // Client email, I will receive
+  $headers2 = "From: " . $mailto; // This will receive client
+  
+  //PHP mailer function
+  
+   $result1 = mail($mailto, $subject, $message, $headers); // This email sent to My address
+   $result2 = mail($fromEmail, $subject2, $message2, $headers2); //This confirmation email to client
+  
+   //Checking if Mails sent successfully
+  
+   if ($result1 && $result2) {
+     $success = "Your Message was sent Successfully!";
+   } else {
+     $failed = "Sorry! Message was not sent, Try again Later.";
+   }
+  
+ }
+  
+ ?>
           </div>
           <div class="clearfix"></div>
         </div>
@@ -158,7 +203,7 @@
                     </div>
 
                     <div class="card-content">
-                      <h2 class="name"><a href="">crisis managenent</a></h2>
+                      <h2 class="name"><a href="#contact">crisis managenent</a></h2>
                       <p class="description">
                         With a bullet-proof crisis management protocol, we are
                         adept at assisting our clients sail through an imposing
@@ -175,7 +220,7 @@
 
                       <div class="card-image">
                         <img
-                          src="images/graphic-designer.jpg"
+                          src="images/performace.jpg"
                           alt=""
                           class="card-img"
                         />
@@ -197,7 +242,7 @@
 
                       <div class="card-image">
                         <img
-                          src="images/graphic-designer.jpg"
+                          src="images/contact-marketing.jpg"
                           alt=""
                           class="card-img"
                         />
@@ -219,7 +264,7 @@
 
                       <div class="card-image">
                         <img
-                          src="images/graphic-designer.jpg"
+                          src="images/event-planner.jpg"
                           alt=""
                           class="card-img"
                         />
@@ -249,7 +294,7 @@
                     </div>
 
                     <div class="card-content">
-                      <h2 class="name"><a href=""></a>digital marketing</h2>
+                      <h2 class="name"><a href=""></a>Digital Marketing</h2>
                       <p class="description">
                         Leveraging digital tools to help organizations run more
                         effectively by increasing the footfall on the website
@@ -327,7 +372,7 @@
 
       <section id="logosec">
         <div class="inner">
-          <h2 class="fw-bold "><a href="https://twenty7inc.in/clientele/" target="_blank">Clientele</a></h2>
+          <h2><a href="https://twenty7inc.in/clientele/" target="_blank">Clientele</a></h2>
           <div id="clintele">
             <div class="gallery">
               <img src="images/logo/logo-24.png"  alt="" />
@@ -339,7 +384,7 @@
               <img src="images/logo/Nova-Dairy-Logo.jpg" alt="" />
             </div>
             <div class="gallery">
-              <img src="images/logo/logo2.png" alt="" />
+              <img src="images/logo/Logo2.png" alt="" />
             </div>
             
             <div class="gallery">
@@ -769,10 +814,10 @@
     <h3>We Simplify <br> Communication</h3>
    <div class="line"></div> 
     <p>At Twenty7inc, we are driven by creativity, and a genuine love for proactive and holistic communications to build your brand.</p>
-    <a href=""><i class="fab fa-facebook-f icon"></i></a>
-    <a href=""><i class="fab fa-twitter icon"></i></a>
-    <a href=""><i class="fab fa-linkedin-in icon"></i></a>
-    <a href=""><i class="fab fa-instagram icon"></i></a>
+    <a href="https://www.facebook.com/Twenty7Inc" target="_blank"><i class="fa-brands fa-facebook icon"></i></a>
+    <a href="https://twitter.com/Twenty7Inc" target="_blank"><i class="fab fa-twitter icon"></i></a>
+    <a href="https://www.linkedin.com/authwall?trk=gf&trkInfo=AQGXK7pRNk_fvQAAAYM_2bmox8Ig8CbfLFQ0nTnBysZD5JvAcYceFyDuPapwCKLC9Lg1I61wOnjNybVylo8jOYGCvYVfjpcbsEQ1_BcoRmesZDht44-C1Q0js9tAdy-6JugC57U=&original_referer=https://twenty7inc.in/&sessionRedirect=https%3A%2F%2Fin.linkedin.com%2Fcompany%2Ftwenty7-inc" target="_blank"><i class="fab fa-linkedin-in icon"></i></a>
+    <a href="https://www.instagram.com/twenty7inc/" target="_blank"><i class="fab fa-instagram icon"></i></a>
     
     
     </div>
@@ -820,15 +865,28 @@
       <script src="js/swiper-bundle.min.js"></script>
       <script src="js/script.js"></script>
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       <script>
         AOS.init();
       </script>
-    <script>
+    <!-- <script>
       const togbtn = document.querySelector('#toggle')
         const navlinks = document.querySelector('.navlinks')
   
-        togbtn.addEventListener('click',()=>{navlinks.classList.toggle('mobile-menu')})
-    </script>
- 
+        togbtn.addEventListener('click',()=>{navlinks.classList.toggle('mobile-menu')}  )
+    </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+    $('#toggle').click(function(e) {
+      e.stopPropagation();
+      $(".navlinks").toggleClass('mobile-menu')
+    });
+    $('body').click(function(e) {
+      if ($('.navlinks').hasClass('mobile-menu')) {
+        $(".navlinks").toggleClass('mobile-menu')
+      }
+    })
+  </script>
+
   </body>
 </html>
